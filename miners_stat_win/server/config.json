@@ -1,0 +1,129 @@
+{
+  "listen": ":8089",
+  "miners": {
+    "igor": {
+      "PC1": {
+        "name": "PC1",
+        "addr": "192.168.100.1",
+        "port": 3333,
+        "temp": 75,
+        "e_rate": 150,
+        "d_rate": 4500
+      },
+      "PC2": {
+        "name": "PC2",
+        "addr": "192.168.100.2",
+        "port": 3333,
+        "temp": 75,
+        "e_rate": 150,
+        "d_rate": 4500
+      },
+      "PC3": {
+        "name": "PC3",
+        "addr": "192.168.100.3",
+        "port": 3333,
+        "temp": 75,
+        "e_rate": 150,
+        "d_rate": 4500
+      },
+      "PC5": {
+        "name": "PC5",
+        "addr": "192.168.100.5",
+        "port": 3333,
+        "temp": 75,
+        "e_rate": 150,
+        "d_rate": 4500
+      },
+      "PC19": {
+        "name": "PC19",
+        "addr": "192.168.100.19",
+        "port": 3333,
+        "temp": 75,
+        "e_rate": 150,
+        "d_rate": 4500
+      },
+      "PC21": {
+        "name": "PC21",
+        "addr": "192.168.100.21",
+        "port": 3333,
+        "temp": 75,
+        "e_rate": 150,
+        "d_rate": 4500
+      },
+      "PC23": {
+        "name": "PC23",
+        "addr": "192.168.100.23",
+        "port": 3333,
+        "temp": 75,
+        "e_rate": 150,
+        "d_rate": 4500
+      },
+      "PC24": {
+        "name": "PC24",
+        "addr": "192.168.100.24",
+        "port": 3333,
+        "temp": 75,
+        "e_rate": 150,
+        "d_rate": 4500
+      },
+      "PC25": {
+        "name": "PC25",
+        "addr": "192.168.100.25",
+        "port": 3333,
+        "temp": 75,
+        "e_rate": 150,
+        "d_rate": 4500
+      },
+      "PC51": {
+        "name": "PC51",
+        "addr": "192.168.100.51",
+        "port": 3333,
+        "temp": 75,
+        "e_rate": 150,
+        "d_rate": 4500
+      }
+    },
+    "dima": {
+      "dima1": {
+        "name": "dima1",
+        "addr": "192.168.100.30",
+        "port": 3333,
+        "temp": 75,
+        "e_rate": 150,
+        "d_rate": 4500
+      },
+      "dima2": {
+        "name": "dima2",
+        "addr": "192.168.100.31",
+        "port": 3333,
+        "temp": 75,
+        "e_rate": 150,
+        "d_rate": 4500
+      },
+      "dima3": {
+        "name": "dima3",
+        "addr": "192.168.100.32",
+        "port": 3333,
+        "temp": 75,
+        "e_rate": 150,
+        "d_rate": 4500
+      },
+      "dima4": {
+        "name": "dima4",
+        "addr": "192.168.100.34",
+        "port": 3333,
+        "temp": 75,
+        "e_rate": 150,
+        "d_rate": 4500
+      },
+      "dima5": {
+        "name": "dima5",
+        "addr": "192.168.100.35",
+        "port": 3333,
+        "temp": 75,
+        "e_rate": 150,
+        "d_rate": 4500
+      }
+    }
+  }
+}

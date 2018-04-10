@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="vue.js"></script>
+    <script src="axios.min.js"></script>
+    <style type="text/css">
+        body {
+            padding: 5px
+        }
+
+        TD,
+        TH {
+            padding: 3px;
+            /* Поля вокруг содержимого таблицы */
+            border: 1px solid rgba(0, 0, 0, 0.712);
+            /* Параметры рамки */
+        }
+
+        table {
+            border-collapse: collapse;
+
+        }
+    </style>
+    <bgsound src="#" id=music loop=1 autostart="true">
+
+</head>
+
+<body>
+    <audio id="audio" loop="loop" preload="auto">
+        <source src="alert.ogg" type="audio/ogg">
+        <source src="alert.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="app">
+        <div v-if="error">
+            <div class="alert alert-danger" role="alert">
+                <strong>Oh snap!</strong> API Error!
+            </div>
+        </div>
+        <div v-else v-for="(miner, name) in table">
+            <span class="badge badge-success">{{name}}</span>
+
+            <button @click="showIp=!showIp" type="button" class="btn btn-info btn-sm">SHOW IP</button>
+            <table class="table-bordered">
+                <thead class="thead-default">
+                    <tr>
+                        <th>
+                            NAME
+                        </th>
+                        <th v-bind:class="{ 'd-none': !showIp }">
+                            IP
+                        </th>
+                        <th>
+                            Time RUN
+                        </th>
+                        <th>
+                            Hash rate ETH
+                        </th>
+                        <th>
+                            Hash rate DCR
+                        </th>
+                        <th>
+                            GPU Temperature
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(worker, wrname) in miner" v-bind:class="{ 'bg-danger text-white': !worker.online }">
+                        <th scope="row">
+                            {{wrname}}
+                            <br>
+                            <button @click="reboot(worker.addr)" type="button" class="btn btn-info btn-sm">REBOOT</button>
+                        </th>
+
+                        <td v-bind:class="{ 'd-none': !showIp }">
+                            {{worker.addr}}
+                        </td>
+                        <td v-if="worker.status">
+                            {{worker.status.time |formattime}}
+                        </td>
+                        <td v-else-if="worker.status" class="bg-danger"></td>
+                        <td v-if="worker.status">
+                            {{worker.status.e_hashrate*1000 |formatHashrate}}
+                            <table>
+                                <tr>
+                                    <td v-for="hr in worker.status.e_gpu_hashrate" v-bind:class="{ 'bg-danger text-white': hr<1, 'bg-success': hr>1 }">{{hr*1000 |formatHashrate}}</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td v-if="worker.status">
+                            {{worker.status.d_hashrate*1000 |formatHashrate}}
+                            <table>
+                                <tr>
+                                    <td v-for="hrd in worker.status.d_gpu_hashrate" v-bind:class="{ 'bg-warning': hrd<1, 'bg-success': hrd>1  }">{{hrd*1000 |formatHashrate}}</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td v-if="worker.status">
+
+                            <table border="1" cellpadding="5" cellspacing="0">
+                                <tr>
+                                    <td>Temp</td>
+                                    <td v-for="temper in worker.status.gpus" v-bind:class="{ 'bg-danger text-white': temper[0,0]>80, 'bg-success': temper[0,0]<80  }">{{temper[0,0]}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Fan</td>
+                                    <td v-for="temper in worker.status.gpus">{{temper[0,1]}}</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+    <script src="jquery-3.1.1.slim.min.js"></script>
+    <script src="tether.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+</body>
+
+</html>
